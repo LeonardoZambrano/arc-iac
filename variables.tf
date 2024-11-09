@@ -61,6 +61,46 @@ variable "subnet_2_ava_zone" {
   default = "us-east-1d"
 }
 
+#subnet 3
+variable "subnet_3_cidr" {
+  type = map(string)
+  default = {
+    "default" = "192.168.13.64/27"
+    "dev"     = "192.168.14.64/27"
+  }
+}
+variable "subnet_3_name" {
+  type = map(string)
+  default = {
+    "default" = "sn-itm-lab-private-3-tf"
+    "dev"     = "sn-itm-dev-private-3-tf"
+  }
+}
+variable "subnet_3_ava_zone" {
+  type    = string
+  default = "us-east-1a"
+}
+
+#subnet 4
+variable "subnet_4_cidr" {
+  type = map(string)
+  default = {
+    "default" = "192.168.13.96/27"
+    "dev"     = "192.168.14.96/27"
+  }
+}
+variable "subnet_4_name" {
+  type = map(string)
+  default = {
+    "default" = "sn-itm-lab-private-4-tf"
+    "dev"     = "sn-itm-dev-private-4-tf"
+  }
+}
+variable "subnet_4_ava_zone" {
+  type    = string
+  default = "us-east-1d"
+}
+
 variable "ig_name" {
   type = map(string)
   default = {
@@ -74,6 +114,80 @@ variable "route_table_name" {
   default = {
     "default" = "rt-itm-lab-public-tf"
     "dev"     = "rt-itm-dev-public-tf"
+  }
+}
+
+#####EC2 y SG
+
+variable "ec2_public_key" {
+  type = map(string)
+  default = {
+    "default" = "my_key_lab"
+    "dev"     = "my_key_dev"
+  }
+}
+
+variable "sec_groups_name" {
+  type = map(string)
+  default = {
+    "default" = "sec-groups-itm-lab-tf"
+    "dev"     = "sec-groups-itm-dev-tf"
+  }
+}
+
+variable "ec2_webapp_ami" {
+  type = map(string)
+  default = {
+    "default" = "ami-063d43db0594b521b"
+    "dev"     = "ami-063d43db0594b521b"
+  }
+}
+
+variable "ec2_instance_type" {
+  type = map(string)
+  default = {
+    "default" = "t2.micro"
+    "dev"     = "t2.micro"
+  }
+}
+
+variable "ec2_quantity" {
+  type = map(string)
+  default = {
+    "default" = "1"
+    "dev"     = "1"
+  }
+}
+
+variable "ec2_webapp_name" {
+  type = map(string)
+  default = {
+    "default" = "my_web_app_ec2_lab"
+    "dev"     = "my_web_app_ec2_dev"
+  }
+}
+
+variable "ec2_webapp_user_data" {
+  type = map(string)
+  default = {
+    "default" = <<EOF
+#!/bin/bash
+yum update -y
+amazon-linux-extras install mariadb10.5
+amazon-linux-extras install php8.2
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+EOF
+    "dev"     = <<EOF
+#!/bin/bash
+yum update -y
+amazon-linux-extras install mariadb10.5
+amazon-linux-extras install php8.2
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+EOF
   }
 
 }
