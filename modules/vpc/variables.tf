@@ -55,6 +55,38 @@ variable "subnet_2_ava_zone" {
   description = "Subnet 2 Availability Zone"
 }
 
+# Subnet 3
+variable "subnet_3_cidr" {
+  type        = string
+  description = "subnet 3 CIDR"
+}
+
+variable "subnet_3_name" {
+  type        = string
+  description = "subnet 3 Name"
+}
+
+variable "subnet_3_ava_zone" {
+  type        = string
+  description = "Subnet 3 Availability Zone"
+}
+
+# Subnet 4
+variable "subnet_4_cidr" {
+  type        = string
+  description = "subnet 4 CIDR"
+}
+
+variable "subnet_4_name" {
+  type        = string
+  description = "subnet 4 Name"
+}
+
+variable "subnet_4_ava_zone" {
+  type        = string
+  description = "Subnet 4 Availability Zone"
+}
+
 ### Internet Gateway Name
 variable "ig_name" {
   type        = string

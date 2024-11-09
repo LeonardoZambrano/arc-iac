@@ -42,10 +42,10 @@ resource "aws_subnet" "SUBNETPublic2ITMKubernetes" {
 
 ############# Private Subnets #############
 
-resource "aws_subnet" "SUBNETPrivate1ITMKubernetes" {
+resource "aws_subnet" "SUBNETPrivate3ITMKubernetes" {
   vpc_id            = aws_vpc.VPCITMKubernetes.id
   cidr_block        = var.subnet_3_cidr
-  availability_zone = var.subnet_1_ava_zone
+  availability_zone = var.subnet_3_ava_zone
   depends_on        = [aws_vpc.VPCITMKubernetes]
 
 
@@ -55,10 +55,10 @@ resource "aws_subnet" "SUBNETPrivate1ITMKubernetes" {
     owner = var.owner
   }
 }
-resource "aws_subnet" "SUBNETPrivate2ITMKubernetes" {
+resource "aws_subnet" "SUBNETPrivate4ITMKubernetes" {
   vpc_id            = aws_vpc.VPCITMKubernetes.id
   cidr_block        = var.subnet_4_cidr
-  availability_zone = var.subnet_2_ava_zone
+  availability_zone = var.subnet_4_ava_zone
   depends_on        = [aws_vpc.VPCITMKubernetes]
 
 
